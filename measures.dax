@@ -1,0 +1,105 @@
+Выручка =
+CALCULATE([Выручка строк всего], FILTER(order_lines, NOT ISBLANK(RELATED(orders[order_id]))))
+
+Выручка без категории =
+
+CALCULATE (
+    [Выручка],
+    ISBLANK ( products[category] )
+)
+
+Доля выручки без категории =
+
+DIVIDE (
+    [Выручка без категории],
+    [Выручка]
+)
+
+Количество заказов =
+
+DISTINCTCOUNT ( orders[order_id] )
+
+Активные пользователи =
+
+DISTINCTCOUNT ( orders[user_id] )
+
+Средний чек =
+
+DIVIDE ( [Выручка], [Количество заказов] )
+
+Заказы без города =
+COALESCE(COUNTROWS(FILTER(orders, ISBLANK(RELATED(warehouses[city])))),0)
+
+Минимальная дата заказа =
+MIN(orders[order_date])
+
+Максимальная дата заказа =
+MAX(orders[order_date])
+
+Количество уникальных дат =
+DISTINCTCOUNT(orders[order_date])
+
+Заказы без строк =
+
+COUNTROWS(
+    FILTER(
+        orders,
+        ISBLANK(
+            CALCULATE(
+                COUNTROWS(order_lines)
+            )
+        )
+    )
+)
+
+Заказы без строк (0) =
+
+COALESCE( [Заказы без строк], 0 )
+
+Количество валидных заказов =
+
+[Количество заказов] - [Заказы без строк]
+
+Средний чек (без пустых заказов) =
+
+DIVIDE(
+    [Выручка],
+    [Количество валидных заказов]
+)
+
+Доля пустых заказов =
+
+DIVIDE(
+    [Заказы без строк],
+    [Количество заказов]
+)
+
+Выручка строк всего =
+SUMX(order_lines, order_lines[price] * order_lines[quantity])
+
+Заказы с товаром =
+DISTINCTCOUNT(order_lines[order_id])
+
+Количество единиц =
+CALCULATE(SUM(order_lines[quantity]), FILTER(order_lines, NOT ISBLANK(RELATED(orders[order_id]))))
+
+Строки без заказа =
+COALESCE(COUNTROWS(FILTER(order_lines, ISBLANK(RELATED(orders[order_id])))),0)
+
+Выручка строк без заказа =
+CALCULATE([Выручка строк всего], FILTER(order_lines, ISBLANK(RELATED(orders[order_id]))))
+
+Пользователей в выгрузке =
+COUNTROWS('orders (2)')
+
+Выручка топ 10 =
+VAR t = TOPN(10, FILTER(ALLSELECTED(products[product]), NOT ISBLANK(products[product])), [Выручка], DESC, products[product], ASC) RETURN IF(ISINSCOPE(products[product]), IF(CONTAINS(t, products[product], SELECTEDVALUE(products[product])), [Выручка]), SUMX(t, [Выручка]))
+
+Заказы =
+[Количество заказов]
+
+Без строк =
+[Заказы без строк (0)]
+
+Доля =
+[Доля пустых заказов]

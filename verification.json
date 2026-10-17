@@ -1,0 +1,16 @@
+{
+  "source_hashes_unchanged": true,
+  "pbix_reopened": true,
+  "pbix_pages": 5,
+  "dax_matches_independent_calculation": true,
+  "task2_ids_match_power_bi_sql_pandas_excel": true,
+  "xls_format": 56,
+  "xls_rows_with_header": 4170,
+  "xls_columns": 1,
+  "xls_formula_cells": 0,
+  "unit_tests_passed": 2,
+  "word_pages": 10,
+  "word_rendering": "Microsoft Word ExportAsFixedFormat; pypdfium2 PNG review",
+  "postgresql_runtime_tested": false,
+  "sqlite_runtime_tested": true
+}

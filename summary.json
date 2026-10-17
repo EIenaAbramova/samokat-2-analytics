@@ -1,0 +1,85 @@
+{
+  "audit": {
+    "orders": {
+      "raw_rows": 269271,
+      "exact_duplicate_rows": 65,
+      "model_rows": 269206
+    },
+    "order_lines": {
+      "raw_rows": 975171,
+      "exact_duplicate_rows": 65,
+      "model_rows": 975171
+    },
+    "products": {
+      "raw_rows": 1740,
+      "exact_duplicate_rows": 15,
+      "model_rows": 1725
+    },
+    "warehouses": {
+      "raw_rows": 74,
+      "exact_duplicate_rows": 0,
+      "model_rows": 74
+    }
+  },
+  "revenue": 68893398.579375,
+  "orders": 269206,
+  "users_all_ids": 72804,
+  "orders_without_lines": 28676,
+  "orders_without_warehouse": 408,
+  "revenue_without_product": 7470537.75,
+  "unknown_product_ids": 2803,
+  "invalid_product_id_lines": 1,
+  "invalid_user_orders": 2,
+  "task2_users": 4169,
+  "task2_exactly_2_units": 2316,
+  "task2_at_least_2_skus": 2996,
+  "task2_food_skus": 66,
+  "task2_old_category_rule_users": 5228,
+  "first_orders_spb_period": 13329,
+  "top5": [
+    {
+      "product_id": "3107",
+      "product": "Корм Kitekat для кошек, с кроликом в соусе, 85 г",
+      "first_order_count": 590
+    },
+    {
+      "product_id": "9736",
+      "product": "Свекла вареная очищенная, 500 г",
+      "first_order_count": 399
+    },
+    {
+      "product_id": "1687",
+      "product": "Крабовые палочки Бухта Изобилия имитация, замороженные, 200 г",
+      "first_order_count": 394
+    },
+    {
+      "product_id": "2870",
+      "product": "Йогурт Чудо питьевой, с вишней и черешней, 2,4%, 270 г",
+      "first_order_count": 394
+    },
+    {
+      "product_id": "3950",
+      "product": "Икра трески Санта Бремор Pate, деликатесная, 90 г",
+      "first_order_count": 353
+    }
+  ],
+  "period": [
+    "2017-08-01",
+    "2017-08-30"
+  ],
+  "source_sha256": {
+    "orders - Семён Яшин.csv": "55e7d0c64f22113c02e1e0f2fa613f57a98bc7b985dc5363898fb93340d3d5f7",
+    "order_lines - Семён Яшин.txt": "f1a9e21670aaae6c38a4e6e209fbf9d1e829acf99d39e08aabf5738534a74214",
+    "products - Семён Яшин.csv": "fa3f30cae2d3ffb483fdf1932923f55bb5f3b45d1076d29edac8f32095dd195c",
+    "warehouses - Семён Яшин.csv": "c928cbb5d536da87d2d93101ceed6cbc13d8aeff3ee0ab44305627ea38c69fad"
+  },
+  "checks": [
+    "unique dimension keys",
+    "nonnegative price and positive quantity",
+    "task2 SQL equals pandas",
+    "task3 SQL equals pandas"
+  ],
+  "orphan_lines": 10,
+  "orphan_revenue": 745.5,
+  "revenue_matched_orders": 68892653.079375
+}
